@@ -130,5 +130,4 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # ALLOWED_HOSTS = ['192.168.100.174', 'localhost', '127.0.0.1']
-ALLOWED_HOSTS = ['.vercel.app']
 
