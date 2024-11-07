@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/started.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="intro-section">
+        <div class="overlay">
+            <h1>Get Started with Sustainability</h1>
+            <p>Learn how you can contribute to a greener planet, no matter where you are or your level of expertise.</p>
+        </div>
+    </section>
+
+    <section class="contribution-section">
+        <div class="container">
+            <h2>How You Can Make a Difference</h2>
+            <p>Whether you're an individual, a business owner, or part of a community, there are various ways you can contribute to sustainability:</p>
+            
+            <div class="row">
+                <div class="col-md-6 option-card">
+                    <h3>For Individuals</h3>
+                    <p>Start small with actions like reducing energy consumption at home, using energy-efficient appliances, or adopting solar panels.</p>
+                </div>
+                <div class="col-md-6 option-card">
+                    <h3>For Businesses</h3>
+                    <p>Consider installing solar energy systems, promoting green initiatives, or investing in renewable energy credits.</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 option-card">
+                    <h3>For Communities</h3>
+                    <p>Organize clean energy drives, support local renewable energy projects, and educate others on sustainable practices.</p>
+                </div>
+                <div class="col-md-6 option-card">
+                    <h3>Government & Policy Makers</h3>
+                    <p>Advocate for policies that support renewable energy, provide incentives for green energy adoption, and invest in research and development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Need Help Section with Form -->
+    <section class="help-section">
+        <div class="container">
+            <h2>Need Help?</h2>
+            <p>If you're unsure how to get started or need personalized assistance, fill out the form below, and we'll guide you!</p>
+            
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="description">How can we help you?</label>
+                    <textarea id="description" name="description" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}

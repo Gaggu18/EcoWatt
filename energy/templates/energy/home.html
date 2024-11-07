@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/home_styles.css' %}">
+<link rel="stylesheet" href="{% static 'css/chat.css' %}">
+{% endblock %}
+
+{% block content %}
+    <!-- Hero Section with GIF and Slogan -->
+    <section class="hero">
+        <div class="image-container">
+            <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExczNpNzI4ajVhMzFqbDR0bnNnM3AzNDJia3I4eTEyaWtzcTcxNDM5cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vS5cNXCFwVxDFpBWNp/giphy.gif" alt="GIF">
+            <div class="slogan">
+                <h1>"Sustainable Solutions: For Every Home, Every Business, Every Planet!"</h1>
+                <a class="btn btn-primary" href="{% url 'why_renewable' %}">Read More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="intro">
+        <div class="container">
+            <div class="one">
+                <h1>Welcome to EcoWatt</h1>
+              </div>
+            <p>EcoWatt is your guide to harnessing renewable energy for a sustainable future. Learn how to make energy-saving decisions and reduce your carbon footprint with our easy-to-use tools and resources.</p>
+        </div>
+    </section>
+
+    <!-- Features Overview -->
+    <section class="features">
+        <div class="container">
+            <h2>Features</h2>
+            <div class="row">
+                <div class="col-md-4 feature energy-calculator">
+                    <h3>Energy Calculator</h3>
+                    <p>Calculate your energy needs and explore renewable solutions.</p>
+                    <a href="{% url 'energy_calculator' %}" class="btn btn-secondary">Go to Calculator</a>
+                </div>
+                <div class="col-md-4 feature renewable-map">
+                    <h3>Renewable Map</h3>
+                    <p>Find renewable energy options and resources near you.</p>
+                    <a href="{% url 'renewable_map' %}" class="btn btn-secondary">Explore Map</a>
+                </div>
+                <div class="col-md-4 feature latest-news">
+                    <h3>Latest News</h3>
+                    <p>Stay updated with the latest trends and developments in renewable energy.</p>
+                    <a href="{% url 'renewable_news' %}" class="btn btn-secondary">Read News</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat Section -->
+    <section class="chat-section">
+        <div class="container">
+            <h2>Quick Questions? Ask our Virtual Environment Professor😉!</h2>
+            <form id="chat-form" method="POST" action="/energy/chat/">
+                {% csrf_token %}
+                <label for="query">Ask a question:</label>
+                <input type="text" id="query" name="query" placeholder="Enter your query">
+                <button type="submit">Submit</button>
+            </form>
+            <div id="response"></div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="call-to-action">
+        <div class="container">
+            <h2>Ready to Make a Difference?</h2>
+            <a href="{% url 'get_started' %}" class="btn btn-primary">Get Started</a>
+        </div>
+    </section>
+
+    <script>
+        const form = document.getElementById('chat-form');
+        const responseDiv = document.getElementById('response');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();  // Prevent the page from reloading or navigating away
+
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Reset the response div content
+                responseDiv.innerHTML = '';
+
+                // Log data for debugging
+                console.log('Response data:', data);
+
+                // Display the response in a readable way
+                if (data.data && data.data.answer) {
+                    responseDiv.innerHTML = `
+                        <h3>Response:</h3>
+                        <p><strong>Answer:</strong> ${data.data.answer}</p>
+                        <p><strong>Status:</strong> ${data.data.status}</p>
+                        <p><strong>Session ID:</strong> ${data.data.sessionId}</p>
+                    `;
+                } else {
+                    responseDiv.innerHTML = `<p>No answer was returned from the chat.</p>`;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                responseDiv.innerHTML = 'An error occurred while processing your request.';
+            });
+        });
+    </script>
+{% endblock %}

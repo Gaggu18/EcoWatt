@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/calculator_styles.css' %}">
+{% endblock %}
+
+{% block title %}EcoWatt{% endblock %}
+
+{% block content %}
+   
+    {% if form.errors %}
+        <div class="alert alert-danger">
+            <ul>
+                {% for field, errors in form.errors.items %}
+                    <li>{{ field }}: {{ errors|join:", " }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    
+    <section class="calculator-info">
+        <h1>Calculate Your Solar System Requirements</h1>
+        <p><strong>Welcome to EcoWatt’s Energy Calculator!</strong> This tool helps you determine the optimal solar system for your needs. Here’s what you can discover:</p>
+        <ul>
+            <li><strong>Solar Power Requirements:</strong> Find out how much power you need from your solar system to meet your energy consumption. This calculation helps in sizing your solar panels effectively.</li>
+            <li><strong>Installation Costs:</strong> Get an estimate of the total cost to install a solar system based on your power requirements. This includes all the necessary components and installation fees.</li>
+            <li><strong>Potential Savings:</strong> Calculate how much money you can save on your energy bills by switching to solar power. The calculator provides a detailed breakdown of your yearly savings.</li>
+            <li><strong>Carbon Emission Reduction:</strong> Understand how much carbon dioxide (CO2) emissions you can reduce by using solar energy instead of non-renewable sources. This helps you contribute to a cleaner and greener environment.</li>
+        </ul>
+    </section>
+    
+    <section class="form-section">
+        <form method="post">
+            {% csrf_token %}
+            
+            <!-- Household Name -->
+            <div class="form-group">
+                <label for="household_name">{{ form.household_name.label }}</label>
+                {{ form.household_name }}
+            </div>
+
+            <!-- Monthly Energy Usage -->
+            <div class="form-group">
+                <label for="monthly_energy_usage">{{ form.monthly_energy_usage.label }}</label>
+                {{ form.monthly_energy_usage }}
+            </div>
+        
+            <div class="form-group">
+                <label for="id_location">{{ form.location.label }}</label>
+                {{ form.location }}
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form.energy_price.id_for_label }}">{{ form.energy_price.label }}</label>
+                {{ form.energy_price }}
+            </div>
+            <!-- Renewable Efficiency -->
+            <div class="form-group">
+                <label for="renewable_efficiency">{{ form.renewable_efficiency.label }}</label>
+                {{ form.renewable_efficiency }}
+            </div>
+
+            <!-- Sunlight Hours -->
+            <div class="form-group">
+                <label for="sunlight_hours">{{ form.sunlight_hours.label }}</label>
+                {{ form.sunlight_hours }}
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary">Calculate</button>
+        </form>
+    </section>
+
+    <script>
+        const ENERGY_PRICES = {
+            'Maharashtra': 9.85,
+            'Andhra Pradesh': 8.15,
+            'West Bengal': 8.00,
+            'Kerala': 8.00,
+            'Karnataka': 6.95,
+            'Delhi': 6.80,
+            'Tamil Nadu': 6.40,
+            'Andaman & Nicobar': 6.20,
+            'Odisha': 6.15,
+            'Rajasthan': 6.05,
+            'Madhya Pradesh': 6.05,
+            'Punjab': 5.90,
+            'Tripura': 5.85,
+            'Haryana': 5.45,
+            'Lakshadweep': 5.00,
+            'Uttar Pradesh': 4.80,
+            'Bihar': 4.60,
+            'Meghalaya': 4.30,
+            'Himachal Pradesh': 4.05,
+            'Jammu & Kashmir': 4.00,
+            'Goa': 3.90,
+            'Uttarakhand': 3.70,
+            'Puducherry': 3.35,
+            'Chattisgarh': 3.35,
+            'Daman & Diu': 3.00,
+            'Dadra & Nagar Haveli': 2.75
+        };
+    
+        const DEFAULT_ENERGY_PRICE = 5.50;  // Default price if the state is not in the list
+    
+        // Get the input elements for location and energy price
+        const locationInput = document.getElementById('id_location');
+        const energyPriceInput = document.getElementById('id_energy_price');
+    
+        // Add event listener for input changes in the location field
+        locationInput.addEventListener('input', function() {
+            const location = locationInput.value.trim();  // Get the trimmed value of the location
+            const energyPrice = ENERGY_PRICES[location] || DEFAULT_ENERGY_PRICE;  // Get the price or default
+            energyPriceInput.value = energyPrice.toFixed(2);  // Set the energy price field with 2 decimal places
+        });
+    </script>
+{% endblock %}

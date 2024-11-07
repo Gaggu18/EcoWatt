@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/why.css' %}">
+{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="intro-section">
+        <div class="overlay">
+            <h1>Why Renewable Energy Matters</h1>
+            <p>Together, we can create a sustainable future—before it's too late.</p>
+        </div>
+    </section>
+  
+    <div style="text-align:center;">
+        <img style="width: 900px;" class="large-image" src="https://nca2009.globalchange.gov/sites/default/files/images/1_Global_Page13-e.png" alt="Renewable Energy Image" width="600" height="400">
+    </div>
+
+    <!-- Importance Section with Data -->
+    <section class="importance-section">
+        <div class="container">
+            <h2>Why We Need to Act Now</h2>
+            <p>The global reliance on non-renewable resources is not just unsustainable—it's catastrophic. In 2023, fossil fuels still made up <strong>84%</strong> of global energy consumption <a href="https://ourworldindata.org/fossil-fuels" target="_blank">(Our World in Data)</a>. This addiction to oil, coal, and gas is depleting our planet's natural resources and pushing us toward irreversible damage. <em>We are running out of time.</em></p>
+            
+            <div class="row">
+                <div class="col-md-6 card">
+                    <h3>Environmental Impact</h3>
+                    <p>According to the <a href="https://www.ipcc.ch/report/sixth-assessment-report-working-group-ii/" target="_blank">IPCC's Sixth Assessment Report</a>, if global temperatures rise more than 1.5°C, we will see extreme climate conditions—more floods, droughts, wildfires, and loss of biodiversity. Transitioning to renewable energy can reduce global CO<sub>2</sub> emissions by up to 70% by 2050.</p>
+                </div>
+                <div class="col-md-6 card">
+                    <h3>Economic Benefits</h3>
+                    <p>Studies by the <a href="https://www.irena.org/publications/2020/Sep/Global-Renewables-Outlook-2020" target="_blank">International Renewable Energy Agency (IRENA)</a> suggest that switching to renewables could boost global GDP by <strong>$98 trillion</strong> by 2050, while creating millions of jobs in green industries.</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 card">
+                    <h3>Energy Security</h3>
+                    <p>With fossil fuels running out and energy demands increasing, countries are facing serious energy security issues. The 2021 Texas power crisis <a href="https://www.nytimes.com/2021/02/16/us/texas-power-grid-failures.html" target="_blank">(New York Times)</a> highlighted the vulnerabilities in relying on outdated, centralized power grids fueled by coal and gas. Renewable energy is decentralized, sustainable, and available everywhere.</p>
+                </div>
+                <div class="col-md-6 card">
+                    <h3>Personal Responsibility</h3>
+                    <p>Did you know that the average American household is responsible for <strong>50 metric tons</strong> of CO<sub>2</sub> emissions annually? <a href="https://www.nytimes.com/guides/year-of-living-better/how-to-reduce-your-carbon-footprint" target="_blank">(NY Times: Reduce Your Carbon Footprint)</a> By adopting solar power, reducing energy waste, and supporting green initiatives, we can all contribute to global sustainability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="call-to-action-section">
+        <div class="container">
+            <h2>Join the Movement</h2>
+            <p>Be part of the solution. It’s time to reduce our dependence on non-renewable energy and embrace a greener future. Learn how you can contribute to a global change.</p>
+            <a href="{% url 'get_started' %}" class="btn btn-primary">Get Started with EcoWatt</a>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/result_styles.css' %}">
+{% endblock %}
+
+{% block title %}
+Calculation Results
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h1>Calculation Result</h1>
+        
+        <!-- Display the results in a table format -->
+        <table class="table table-bordered mt-4">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Result Type</th>
+                    <th scope="col">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="solar-power-row">
+                    <td><strong>System Power</strong></td>
+                    <td>{{ system_power|floatformat:2 }} kW</td>
+                </tr>
+                <tr class="surface-area-row">
+                    <td><strong>Surface Area Required</strong></td>
+                    <td>{{ surface_area|floatformat:2 }} m²</td>
+                </tr>
+                <tr class="installation-cost-row">
+                    <td><strong>Total Installation Cost</strong></td>
+                    <td>${{ total_installation_cost|floatformat:2 }}</td>
+                </tr>
+                <tr class="savings-row">
+                    <td><strong>Yearly Energy Savings</strong></td>
+                    <td>${{ yearly_savings|floatformat:2 }}</td>
+                </tr>
+                <tr class="carbon-reduction-row">
+                    <td><strong>CO2 Emission Reduction</strong></td>
+                    <td>{{ carbon_saved|floatformat:2 }} kg of CO2</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <!-- Provide a button for recalculating -->
+        <a href="{% url 'energy_calculator' %}" class="btn btn-primary mt-3">Calculate Again</a>
+
+        <!-- New section for nearby solar system providers -->
+        <div class="mt-5">
+            <h2>Nearby Solar System Providers</h2>
+            {% if providers %}
+                <div class="row">
+                    {% for provider in providers %}
+                        <div class="col-md-6 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ provider.name }}</h5>
+                                    <p class="card-text">
+                                        <strong>Address:</strong> {{ provider.address }}<br>
+                                        <strong>Rating:</strong> {{ provider.rating }}<br>
+                                    </p>
+                                    <a href="https://www.google.com/maps/place/?q=place_id:{{ provider.place_id }}" class="btn btn-primary" target="_blank">View on Google Maps</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>No nearby solar system providers found.</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

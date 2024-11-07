@@ -1,0 +1,58 @@
+/* General Styles for the Page */
+body {
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    color: #2d6a4f;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+button {
+    font-weight: bold;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 12px 18px;
+    border-radius: 4px;
+    background: linear-gradient(to right, rgb(211, 174, 104), rgb(129, 158, 124));
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: linear-gradient(to right, rgb(129, 158, 124), rgb(211, 174, 104));
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.container {
+    margin-bottom: 1rem;
+}
+
+/* Input and button containers */
+input.form-control {
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+

@@ -1,0 +1,131 @@
+/* General Styles */
+body {
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h2, h3 {
+    color: #2d6a4f;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    color: #99d7bb;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* Hero Section Styles */
+.intro-section {
+    position: relative;
+    height: 400px;
+    background: url('https://images.unsplash.com/photo-1526248275596-b1f2a1b1b33b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDd8fGdyZWVuJTIwZW5lcmd5JTIwbmF0dXJlJTIwc2NhbGV8ZW58MHx8fDE2NTI5NjQyM&ixlib=rb-1.2.1&q=80&w=1080') no-repeat center center/cover;
+    color: #fff;
+    text-align: center;
+    padding: 2rem;
+}
+
+.intro-section .overlay {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+/* Contribution Section Styles */
+.contribution-section {
+    padding: 2rem;
+    background-color: #f9f9f9;
+}
+
+.contribution-section .container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.contribution-section .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contribution-section .col-md-6 {
+    flex: 1;
+    margin: 0.5rem;
+    box-sizing: border-box;
+}
+
+.option-card {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.option-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Help Section Styles */
+.help-section {
+    background-color: #e9f5f1;
+    padding: 2rem;
+}
+
+.help-section .container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 0.25rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: #2d6a4f;
+    outline: none;
+}
+
+/* Button Styles */
+.btn-primary {
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 12px 18px;
+    border-radius: 4px;
+    background: linear-gradient(to right, rgb(211, 174, 104), rgb(129, 158, 124));
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(to right, rgb(129, 158, 124), rgb(211, 174, 104));
+}
