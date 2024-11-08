@@ -1,0 +1,116 @@
+/* General Styles */
+body {
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #2d6a4f;
+}
+
+/* Table Styling */
+.table {
+    width: 100%;
+    max-width: 800px;
+    margin: 2rem auto;
+    border-collapse: collapse;
+    background-color: #f9f9f9;
+}
+
+.table thead {
+    background-color: #2d6a4f;
+    color: #fff;
+}
+
+.table thead th {
+    padding: 1rem;
+    font-size: 1.2rem;
+    text-align: left;
+}
+
+.table tbody td {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    font-size: 1.1rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Specific background images for each row */
+.solar-power-row td {
+    background-image: url("https://www.phoenixsolarpanelsystems.com/wp-content/uploads/2022/10/RESIZE-copy-20-1.jpg.webp");
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    font-weight: bold;
+}
+
+.surface-area-row td {
+    background-image: url("https://w0.peakpx.com/wallpaper/890/227/HD-wallpaper-sunset-on-an-empty-field.jpg");
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    font-weight: bold;
+}
+
+.installation-cost-row td {
+    background-image: url("https://st4.depositphotos.com/13324256/26353/i/450/depositphotos_263536652-stock-photo-silver-golden-coins-green-leaves.jpg");
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    font-weight: bold;
+}
+
+.savings-row td {
+    background-image: url("https://images.pexels.com/photos/2131539/pexels-photo-2131539.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    font-weight: bold;
+}
+
+.carbon-reduction-row td {
+    background-image: url("https://media.istockphoto.com/id/1319734700/photo/air-pollution-by-coal-fired-power-station.jpg?s=612x612&w=0&k=20&c=SZp90FbBBP5LiyExrvvAfDCLRj4Iba7rDbafNEkQzc4=");
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Button Styles */
+.btn-primary {
+    display: block;
+    width: 200px;
+    margin: 2rem auto;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    text-align: center;
+    color: white;
+    background-color: #2d6a4f;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #225b3e;
+}
+
+/* Container and Alignment */
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .table {
+        width: 100%;
+    }
+}
